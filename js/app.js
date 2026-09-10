@@ -5,6 +5,9 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavigation();
+  initScrollProgress();
+  initScrollReveal();
+  initCardGlow();
   initMetricsCounter();
   initSkillsFilter();
   initRecruiterActions();
@@ -59,12 +62,14 @@ function initNavigation() {
 
   // Active Link on Scroll (ScrollSpy)
   const sections = document.querySelectorAll('section[id]');
-  window.addEventListener('scroll', () => {
+  let ticking = false;
+
+  function updateScrollSpy() {
     let current = '';
-    const scrollY = window.pageYOffset;
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
 
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
+      const sectionTop = section.offsetTop - 140;
       const sectionHeight = section.offsetHeight;
       if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
         current = section.getAttribute('id');
@@ -76,6 +81,136 @@ function initNavigation() {
       if (link.getAttribute('href') === `#${current}`) {
         link.classList.add('active');
       }
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateScrollSpy);
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
+/* --------------------------------------------------------------------------
+   Scroll Progress Bar & Floating Back-to-Top
+   -------------------------------------------------------------------------- */
+function initScrollProgress() {
+  const progressBar = document.getElementById('scrollProgressBar');
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  const progressCircle = document.getElementById('scrollProgressCircle');
+  const circleLength = 113.1; // 2 * Math.PI * 18
+
+  let ticking = false;
+
+  function updateProgress() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = scrollHeight > 0 ? Math.min(Math.max(scrollY / scrollHeight, 0), 1) : 0;
+
+    if (progressBar) {
+      progressBar.style.width = `${progress * 100}%`;
+    }
+
+    if (progressCircle) {
+      const offset = circleLength - (circleLength * progress);
+      progressCircle.style.strokeDashoffset = offset;
+    }
+
+    if (backToTopBtn) {
+      if (scrollY > 380) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+
+  // Initial calculation
+  updateProgress();
+}
+
+/* --------------------------------------------------------------------------
+   Smooth Scroll Reveal Transitions (IntersectionObserver)
+   -------------------------------------------------------------------------- */
+function initScrollReveal() {
+  // Respect prefers-reduced-motion
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.reveal-on-scroll').forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  const targets = document.querySelectorAll(
+    '.section-header, .fast-track-box, .timeline-item, .case-study-card, .award-card, .digital-twin-wrapper, .edu-card, .contact-card-main, .channel-card, .skills-controls, .skills-grid'
+  );
+
+  targets.forEach(target => {
+    target.classList.add('reveal-on-scroll');
+  });
+
+  // Stagger reveal delays inside card grids
+  const gridParents = document.querySelectorAll('.arch-grid, .awards-grid, .contact-channels-grid, .pitch-grid');
+  gridParents.forEach(parent => {
+    const children = parent.querySelectorAll('.reveal-on-scroll');
+    children.forEach((child, index) => {
+      child.style.transitionDelay = `${(index % 4) * 0.1}s`;
+    });
+  });
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  targets.forEach(target => observer.observe(target));
+}
+
+/* --------------------------------------------------------------------------
+   Interactive Spotlight Glow on Executive Cards (Mousemove)
+   -------------------------------------------------------------------------- */
+function initCardGlow() {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+
+  const glowCards = document.querySelectorAll(
+    '.hero-card, .experience-card, .case-study-card, .award-card, .fast-track-box, .channel-card, .digital-twin-wrapper'
+  );
+
+  glowCards.forEach(card => {
+    card.classList.add('card-glow-interactive');
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
     });
   });
 }
