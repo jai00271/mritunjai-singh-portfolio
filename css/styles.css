@@ -536,18 +536,27 @@ code, pre {
 }
 
 .avatar-graphic {
-  width: 76px;
-  height: 76px;
-  border-radius: 18px;
+  width: 86px;
+  height: 86px;
+  border-radius: 20px;
   background: linear-gradient(135deg, #141820, #0a0c10);
   border: 2px solid var(--gold-border);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 0 0 20px var(--gold-glow);
+  box-shadow: 0 0 24px var(--gold-glow);
   overflow: hidden;
   flex-shrink: 0;
+}
+
+.profile-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 10%;
+  border-radius: 18px;
+  display: block;
 }
 
 .avatar-graphic .avatar-text {
@@ -1379,16 +1388,19 @@ code, pre {
 }
 
 .ai-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
   background: var(--gold-btn);
+  border: 1.5px solid var(--gold);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #07080a;
   font-weight: 800;
-  box-shadow: 0 0 14px var(--gold-glow);
+  box-shadow: 0 0 16px var(--gold-glow);
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
 .chat-container {
