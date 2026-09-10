@@ -92,11 +92,11 @@ With over <strong>14 years of enterprise engineering experience</strong>, I brin
     {
       keywords: ['contact', 'email', 'phone', 'reach', 'interview', 'hire', 'linkedin', 'github', 'call'],
       answer: `<strong>Direct Contact Information:</strong><br>
-• <strong>Email:</strong> <a href="mailto:jai00271@gmail.com" style="color:var(--cyan);text-decoration:underline;">jai00271@gmail.com</a><br>
-• <strong>Phone:</strong> <a href="tel:+918970995611" style="color:var(--cyan);text-decoration:underline;">+91 8970995611</a><br>
+• <strong>Email:</strong> <a href="mailto:jai00271@gmail.com" style="color:var(--gold);text-decoration:underline;">jai00271@gmail.com</a><br>
+• <strong>Phone:</strong> <a href="tel:+918970995611" style="color:var(--gold);text-decoration:underline;">+91 8970995611</a><br>
 • <strong>Location:</strong> Mahadevpura, Bengaluru, India<br>
-• <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mpsinghdonet8yexp/" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:underline;">linkedin.com/in/mpsinghdonet8yexp</a><br>
-• <strong>GitHub:</strong> <a href="https://github.com/jai00271" target="_blank" rel="noopener" style="color:var(--cyan);text-decoration:underline;">github.com/jai00271</a><br><br>
+• <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mpsinghdonet8yexp/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">linkedin.com/in/mpsinghdonet8yexp</a><br>
+• <strong>GitHub:</strong> <a href="https://github.com/jai00271" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:underline;">github.com/jai00271</a><br><br>
 <em>Feel free to drop an email or reach out on LinkedIn to set up a technical interview or exploratory chat!</em>`
     },
     {
@@ -132,7 +132,7 @@ With over <strong>14 years of enterprise engineering experience</strong>, I brin
     // Typing effect simulation
     const typingIndicator = document.createElement('div');
     typingIndicator.className = 'chat-message bot typing';
-    typingIndicator.innerHTML = `<div class="message-bubble" style="color:var(--cyan);font-family:var(--font-mono);font-size:0.8rem;">Jai's Digital Twin is thinking...</div>`;
+    typingIndicator.innerHTML = `<div class="message-bubble" style="color:var(--gold);font-family:var(--font-mono);font-size:0.8rem;">Jai's Digital Twin is thinking...</div>`;
     chatMessages.appendChild(typingIndicator);
     chatMessages.scrollTop = chatMessages.scrollHeight;
 
@@ -154,9 +154,9 @@ With over <strong>14 years of enterprise engineering experience</strong>, I brin
     // Default intelligent response
     return `Thank you for asking! While I might not have an exact script for that specific wording, my background includes <strong>14+ years in .NET Core, Microservices, and System Architecture</strong>, leading engineering teams at <strong>Koch</strong> and <strong>Dell</strong>.<br><br>
 Would you like to know more about:
-• <a href="javascript:void(0)" onclick="triggerPrompt('What scale of systems has he built?')" style="color:var(--cyan);text-decoration:underline;">The scale of systems I have built</a><br>
-• <a href="javascript:void(0)" onclick="triggerPrompt('Tell me about his experience at Dell and Koch.')" style="color:var(--cyan);text-decoration:underline;">My work at Dell and Koch</a><br>
-• <a href="javascript:void(0)" onclick="triggerPrompt('How can I contact or schedule an interview with him?')" style="color:var(--cyan);text-decoration:underline;">How to contact me for an interview</a>`;
+• <a href="javascript:void(0)" onclick="triggerPrompt('What scale of systems has he built?')" style="color:var(--gold);text-decoration:underline;">The scale of systems I have built</a><br>
+• <a href="javascript:void(0)" onclick="triggerPrompt('Tell me about his experience at Dell and Koch.')" style="color:var(--gold);text-decoration:underline;">My work at Dell and Koch</a><br>
+• <a href="javascript:void(0)" onclick="triggerPrompt('How can I contact or schedule an interview with him?')" style="color:var(--gold);text-decoration:underline;">How to contact me for an interview</a>`;
   }
 
   // Handle send button

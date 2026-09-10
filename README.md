@@ -6,7 +6,7 @@ An elegant, dark-themed, high-performance web portfolio engineered specifically 
 
 ## 🌟 Key Features
 
-1. **Dark Obsidian Aesthetics**: Glassmorphic cards (`backdrop-filter: blur(16px)`), cyan & electric indigo accents, clean typographic hierarchy (`Outfit`, `Inter`, and `JetBrains Mono`).
+1. **Matte Black & Refined Gold Aesthetics**: Velvety matte carbon finish (`#0a0c10`), hairline gold borders (`rgba(212, 175, 55, 0.28)`), warm champagne & metallic gold highlights, and executive typography (`Outfit`, `Inter`, and `JetBrains Mono`).
 2. **Recruiter Fast-Track (60-Second Pitch)**: High-density executive summary drawer highlighting strengths, quantified metrics, and target roles with a one-click "Copy Recruiter Packet" feature.
 3. **Interactive Experience Timeline**: In-depth breakdown of leadership and architectural impact at **Koch Global Services**, **Dell Technologies**, and **Odessa Technologies**.
 4. **Architectural Spotlights**: Technical breakdowns of three mission-critical systems:
