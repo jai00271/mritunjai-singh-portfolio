@@ -1,0 +1,302 @@
+/* ==========================================================================
+   Print & PDF Stylesheet for Mritunjai Pratap Singh (Jai) Resume
+   Transforms the web portfolio into a clean, professional, ATS-friendly document
+   ========================================================================== */
+
+@media print {
+  /* Page settings */
+  @page {
+    margin: 1.2cm 1.5cm;
+    size: A4 portrait;
+  }
+
+  /* Reset & Global Overrides */
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
+  body {
+    font-family: 'Times New Roman', Times, serif, system-ui;
+    font-size: 10.5pt;
+    line-height: 1.4;
+    background: #fff !important;
+    color: #111 !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Hide Non-Printable Elements */
+  .site-header,
+  .site-footer,
+  .bg-ambient,
+  .bg-grid,
+  .nav-actions,
+  .hero-actions,
+  .mobile-toggle,
+  .fast-track-box,
+  .digital-twin-wrapper,
+  .toast-notice,
+  .skills-controls,
+  .arch-grid,
+  .pulse-dot,
+  .channel-card,
+  button,
+  .btn {
+    display: none !important;
+  }
+
+  /* Container adjustments */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Hero Section as Resume Header */
+  .hero-section {
+    padding: 0 0 1rem 0 !important;
+    border-bottom: 2pt solid #222 !important;
+    margin-bottom: 1.2rem !important;
+  }
+
+  .hero-grid {
+    display: block !important;
+  }
+
+  .hero-card {
+    display: none !important;
+  }
+
+  .hero-title {
+    font-size: 20pt !important;
+    font-weight: bold !important;
+    margin-bottom: 0.25rem !important;
+    text-align: center;
+  }
+
+  .hero-title .gradient-text {
+    -webkit-text-fill-color: #000 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 12pt !important;
+    text-align: center;
+    margin-bottom: 0.5rem !important;
+    color: #333 !important;
+  }
+
+  .contact-quick-strip {
+    display: flex !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+    padding: 0.25rem 0 !important;
+    border: none !important;
+    font-size: 9.5pt !important;
+  }
+
+  .hero-description {
+    font-size: 10pt !important;
+    margin-top: 0.75rem !important;
+    margin-bottom: 0 !important;
+    text-align: justify;
+  }
+
+  /* Metrics Section */
+  .metrics-section {
+    display: none !important;
+  }
+
+  /* Section Styles */
+  .section {
+    padding: 0.75rem 0 !important;
+  }
+
+  .section-header {
+    margin-bottom: 0.75rem !important;
+    border-bottom: 1pt solid #444;
+    padding-bottom: 0.25rem;
+  }
+
+  .section-tag {
+    display: none !important;
+  }
+
+  .section-title {
+    font-size: 13pt !important;
+    font-weight: bold !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0 !important;
+  }
+
+  .section-subtitle {
+    display: none !important;
+  }
+
+  /* Timeline & Experience */
+  .timeline-container::before {
+    display: none !important;
+  }
+
+  .timeline-item {
+    display: block !important;
+    margin-bottom: 1.2rem !important;
+    page-break-inside: avoid;
+  }
+
+  .timeline-marker {
+    display: none !important;
+  }
+
+  .experience-card {
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .exp-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    margin-bottom: 0.35rem !important;
+  }
+
+  .role-title {
+    font-size: 11pt !important;
+    font-weight: bold !important;
+  }
+
+  .company-line {
+    font-size: 10.5pt !important;
+    color: #222 !important;
+  }
+
+  .exp-duration {
+    font-size: 9.5pt !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .exp-context {
+    font-size: 9.5pt !important;
+    border: none !important;
+    padding: 0 !important;
+    margin-bottom: 0.5rem !important;
+    font-style: italic;
+  }
+
+  .arch-callout {
+    display: none !important;
+  }
+
+  .achievements-list {
+    margin-bottom: 0.5rem !important;
+    padding-left: 1.2rem !important;
+  }
+
+  .achievements-list li {
+    padding: 0 !important;
+    margin-bottom: 0.3rem !important;
+    font-size: 9.5pt !important;
+    list-style-type: disc !important;
+  }
+
+  .achievements-list li::before {
+    display: none !important;
+  }
+
+  .tech-tag-strip {
+    font-size: 8.5pt !important;
+    padding-top: 0.25rem !important;
+    border: none !important;
+  }
+
+  .tech-tag {
+    border: 1pt solid #ccc !important;
+    padding: 1pt 4pt !important;
+    margin-right: 4pt !important;
+    display: inline-block;
+  }
+
+  /* Skills Section */
+  .skills-grid {
+    display: block !important;
+  }
+
+  .skill-card {
+    display: inline-block !important;
+    width: 48% !important;
+    margin-right: 2% !important;
+    margin-bottom: 0.4rem !important;
+    border: none !important;
+    padding: 0 !important;
+    vertical-align: top;
+    page-break-inside: avoid;
+  }
+
+  .skill-name {
+    font-size: 9.5pt !important;
+    font-weight: bold !important;
+  }
+
+  .skill-detail {
+    font-size: 8.5pt !important;
+    margin-bottom: 0.2rem !important;
+  }
+
+  .skill-metric {
+    display: none !important;
+  }
+
+  /* Awards & Education */
+  .awards-grid {
+    display: block !important;
+  }
+
+  .award-card {
+    border: none !important;
+    padding: 0 0 0.5rem 0 !important;
+    margin-bottom: 0.5rem !important;
+    page-break-inside: avoid;
+  }
+
+  .award-icon-box {
+    display: none !important;
+  }
+
+  .award-info h4 {
+    font-size: 10.5pt !important;
+    font-weight: bold !important;
+  }
+
+  .award-desc {
+    font-size: 9pt !important;
+  }
+
+  .edu-grid {
+    display: block !important;
+  }
+
+  .edu-card {
+    border: none !important;
+    padding: 0 !important;
+  }
+
+  .edu-item {
+    border: none !important;
+    padding-bottom: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .edu-title {
+    font-size: 10.5pt !important;
+    font-weight: bold !important;
+  }
+
+  .edu-institution {
+    font-size: 9.5pt !important;
+  }
+}
