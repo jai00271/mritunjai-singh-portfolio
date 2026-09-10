@@ -20,18 +20,40 @@ function initNavigation() {
   const navLinks = document.querySelectorAll('.nav-link');
 
   if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
-      const isExpanded = navMenu.style.display === 'flex';
-      navMenu.style.display = isExpanded ? 'none' : 'flex';
-      navMenu.style.flexDirection = 'column';
-      navMenu.style.position = 'absolute';
-      navMenu.style.top = '72px';
-      navMenu.style.left = '0';
-      navMenu.style.width = '100%';
-      navMenu.style.background = 'var(--bg-glass)';
-      navMenu.style.padding = '1.5rem';
-      navMenu.style.borderBottom = '1px solid var(--border-subtle)';
-      mobileToggle.setAttribute('aria-expanded', !isExpanded);
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navMenu.classList.toggle('active');
+      mobileToggle.setAttribute('aria-expanded', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
+    });
+
+    // Close mobile menu when any nav link is tapped
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 860) {
+          navMenu.classList.remove('active');
+          mobileToggle.setAttribute('aria-expanded', 'false');
+          document.body.classList.remove('menu-open');
+        }
+      });
+    });
+
+    // Close menu when tapping outside
+    document.addEventListener('click', (e) => {
+      if (navMenu.classList.contains('active') && !navMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+        navMenu.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+      }
+    });
+
+    // Close menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        mobileToggle.setAttribute('aria-expanded', 'false');
+        document.body.classList.remove('menu-open');
+      }
     });
   }
 
@@ -172,9 +194,21 @@ function initRecruiterActions() {
   }
 
   // Print / Save as PDF
+  const mobilePrintBtn = document.getElementById('mobilePrintBtn');
   if (printResumeBtn) {
     printResumeBtn.addEventListener('click', (e) => {
       e.preventDefault();
+      window.print();
+    });
+  }
+  if (mobilePrintBtn) {
+    mobilePrintBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const navMenu = document.getElementById('navMenu');
+      const mobileToggle = document.getElementById('mobileToggle');
+      if (navMenu) navMenu.classList.remove('active');
+      if (mobileToggle) mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('menu-open');
       window.print();
     });
   }
